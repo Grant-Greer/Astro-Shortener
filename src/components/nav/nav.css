@@ -1,0 +1,98 @@
+#nav-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1200px;
+  height: 6rem;
+  margin: 1rem auto;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 85%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+ul {
+  display: none;
+}
+
+.hamburger-icon {
+  color: #9e9aa7;
+  cursor: pointer;
+}
+
+.nav-right--desktop {
+  display: hidden;
+}
+
+.nav-right--desktop {
+  display: none;
+}
+
+@media screen and (min-width: 1024px) {
+  nav .hamburger-icon {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+  }
+
+  li {
+    list-style: none;
+    padding: 0 1rem;
+  }
+
+  li a {
+    text-decoration: none;
+    color: var(--Grayish-Violet);
+  }
+
+  li a:hover {
+    color: var(--Dark-Violet);
+  }
+
+  .nav-right--desktop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    width: 50%;
+  }
+
+  .nav-right--desktop button:first-child {
+    border: none;
+    background: none;
+    color: var(--Grayish-Violet);
+    font-weight: 700;
+    font-size: 1.5rem;
+    line-height: 2.2rem;
+    padding: 0.8rem 1.5rem;
+    cursor: pointer;
+  }
+
+  .nav-right--desktop button:last-child {
+    padding: 0.8rem 1.7rem;
+    border: none;
+    border-radius: 2rem;
+    background: var(--Cyan);
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 9rem;
+  }
+
+  .nav-right--desktop button:last-child:hover {
+    background: hsl(180, 74%, 77%);
+  }
+}
