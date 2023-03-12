@@ -45,7 +45,6 @@ const ShortForm = () => {
 
   const copyToClipboard = (url: string) => {
     navigator.clipboard.writeText(url).then(() => {
-      console.log("Copied to clipboard");
       setCopyClicked(true);
       setTimeout(() => {
         setCopyClicked(false);
@@ -79,7 +78,7 @@ const ShortForm = () => {
         </button>
       </form>
       {shortenedUrls.length > 0 && (
-        <ul className="url-list">
+        <ul className="url-list" data-testid="url-list">
           {shortenedUrls.map((url, index) => (
             <li key={index} className="url-list--item">
               <span className="url-list--item--original">
