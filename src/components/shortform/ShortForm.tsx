@@ -1,10 +1,9 @@
-import React, { FunctionComponent } from "react";
+import React from "react";
 import "./shortform.css";
 import { useState, FormEvent, useEffect } from "react";
 
 const ShortForm = () => {
   const [inputUrl, setInputUrl] = useState("");
-  const [copyClicked, setCopyClicked] = useState(false);
   const [error, setError] = useState("");
 
   const [shortenedUrls, setShortenedUrls] = useState<string[]>(
@@ -14,6 +13,8 @@ const ShortForm = () => {
   const [longUrls, setlongUrls] = useState<string[]>(
     () => JSON.parse(localStorage.getItem("longUrls")!) || []
   );
+
+  const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   useEffect(() => {
     localStorage.setItem("shortenedUrls", JSON.stringify(shortenedUrls));
@@ -43,12 +44,9 @@ const ShortForm = () => {
     }
   };
 
-  const copyToClipboard = (url: string) => {
+  const copyToClipboard = (url: string, index: number) => {
     navigator.clipboard.writeText(url).then(() => {
-      setCopyClicked(true);
-      setTimeout(() => {
-        setCopyClicked(false);
-      }, 2000);
+      setCopiedIndex(index);
     });
   };
 
@@ -82,9 +80,9 @@ const ShortForm = () => {
                 <span className="url-list--item--shortened">{url}</span>
                 <button
                   className="copy-button"
-                  onClick={() => copyToClipboard(url)}
+                  onClick={() => copyToClipboard(url, index)}
                 >
-                  {copyClicked ? "Copied!" : "Copy"}
+                  {copiedIndex === index ? "Copied!" : "Copy"}
                 </button>
               </li>
             ))}
