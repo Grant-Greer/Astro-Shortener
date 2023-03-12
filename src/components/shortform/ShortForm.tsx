@@ -50,6 +50,15 @@ const ShortForm = () => {
     });
   };
 
+  const removeFromStorage = (index: number) => {
+    const shortenedUrlsCopy = [...shortenedUrls];
+    const longUrlsCopy = [...longUrls];
+    shortenedUrlsCopy.splice(index, 1);
+    longUrlsCopy.splice(index, 1);
+    setShortenedUrls(shortenedUrlsCopy);
+    setlongUrls(longUrlsCopy);
+  };
+
   return (
     <div className="short-form--container">
       <form onSubmit={handleSubmit} className="short-form">
@@ -83,6 +92,12 @@ const ShortForm = () => {
                   onClick={() => copyToClipboard(url, index)}
                 >
                   {copiedIndex === index ? "Copied!" : "Copy"}
+                </button>
+                <button
+                  className="copy-button"
+                  onClick={() => removeFromStorage(index)}
+                >
+                  Remove
                 </button>
               </li>
             ))}
