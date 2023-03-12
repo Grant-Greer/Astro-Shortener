@@ -9,7 +9,7 @@ import { Footer } from "../components/footer/Footer";
 <Layout title="Link Shortener">
   <Header client:load />
   <main>
-    <ShortForm client:load />
+    <ShortForm client:only="react" />
     <Features />
     <section class="boost-cta">
       <h2>Boost your links today</h2>

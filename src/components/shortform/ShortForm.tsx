@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import "./shortform.css";
 import { useState, FormEvent, useEffect } from "react";
 
@@ -55,46 +55,41 @@ const ShortForm = () => {
   return (
     <div className="short-form--container">
       <form onSubmit={handleSubmit} className="short-form">
-        {(error && (
-          <input
-            type="text"
-            value={inputUrl}
-            onChange={(e) => setInputUrl(e.target.value)}
-            placeholder="Shorten a link here..."
-            className="short-form--input short-form--input--error"
-          />
-        )) || (
-          <input
-            type="text"
-            value={inputUrl}
-            onChange={(e) => setInputUrl(e.target.value)}
-            placeholder="Shorten a link here..."
-            className="short-form--input"
-          />
-        )}
+        <input
+          type="text"
+          value={inputUrl}
+          onChange={(e) => setInputUrl(e.target.value)}
+          placeholder="Shorten a link here..."
+          className={`short-form--input${
+            error ? " short-form--input--error" : ""
+          }`}
+        />
         {error && <p className="input-error">{error}</p>}
+
         <button type="submit" className="short-form--button">
           Shorten It!
         </button>
       </form>
       {shortenedUrls.length > 0 && (
-        <ul className="url-list" data-testid="url-list">
-          {shortenedUrls.map((url, index) => (
-            <li key={index} className="url-list--item">
-              <span className="url-list--item--original">
-                {longUrls[index]}
-              </span>
-              <hr />
-              <span className="url-list--item--shortened">{url}</span>
-              <button
-                className="copy-button"
-                onClick={() => copyToClipboard(url)}
-              >
-                {copyClicked ? "Copied!" : "Copy"}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div>
+          <ul className="url-list" data-testid="url-list">
+            {shortenedUrls.map((url, index) => (
+              <li key={index} className="url-list--item">
+                <span className="url-list--item--original">
+                  {longUrls[index]}
+                </span>
+                <hr />
+                <span className="url-list--item--shortened">{url}</span>
+                <button
+                  className="copy-button"
+                  onClick={() => copyToClipboard(url)}
+                >
+                  {copyClicked ? "Copied!" : "Copy"}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
       )}
     </div>
   );

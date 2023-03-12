@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Children } from "react";
 import "./header.css";
 import { Nav } from "../nav/Nav";
 export const Header = () => {
