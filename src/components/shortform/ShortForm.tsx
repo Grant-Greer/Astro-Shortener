@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useState, FormEvent, useEffect } from "react";
 import "./shortform.css";
-import { useState, FormEvent, useEffect } from "react";
 
 const ShortForm = () => {
   const [inputUrl, setInputUrl] = useState("");
   const [error, setError] = useState("");
 
-  const [shortenedUrls, setShortenedUrls] = useState<string[]>(
-    () => JSON.parse(localStorage.getItem("shortenedUrls")!) || []
-  );
-
-  const [longUrls, setlongUrls] = useState<string[]>(
-    () => JSON.parse(localStorage.getItem("longUrls")!) || []
+  const [urlData, setUrlData] = useState<{ long: string; short: string }[]>(
+    () => JSON.parse(localStorage.getItem("urlData")!) || []
   );
 
   const [copiedIndex, setCopiedIndex] = useState<number | null>(null);
 
   useEffect(() => {
-    localStorage.setItem("shortenedUrls", JSON.stringify(shortenedUrls));
-    localStorage.setItem("longUrls", JSON.stringify(longUrls));
-  }, [shortenedUrls, longUrls]);
+    localStorage.setItem("urlData", JSON.stringify(urlData));
+  }, [urlData]);
+
+  const fetchShortenedUrl = async (url: string) => {
+    const response = await fetch(`https://api.shrtco.de/v2/shorten?url=${url}`);
+    const data = await response.json();
+    return data.result;
+  };
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -29,15 +29,19 @@ const ShortForm = () => {
     }
     setError("");
     try {
-      const response = await fetch(
-        `https://api.shrtco.de/v2/shorten?url=${inputUrl}`
-      );
-      const data = await response.json();
-      const originalLink = data.result.original_link;
-      const endIndex = originalLink.indexOf(".com") + 4;
-      const shortOriginal = originalLink.substring(0, endIndex) + "...";
-      setShortenedUrls([...shortenedUrls, data.result.short_link]);
-      setlongUrls([...longUrls, shortOriginal]);
+      const result = await fetchShortenedUrl(inputUrl);
+      const originalLink = result.original_link;
+
+      // Extract the base URL including the top-level domain
+      const regex = /^(?:https?:\/\/)?(?:[^@\n]+@)?(?:www\.)?([^:\/\n?]+)/i;
+      const match = originalLink.match(regex);
+      const shortOriginal = match ? `${match[0]}...` : originalLink;
+
+      setUrlData((prevUrlData) => [
+        ...prevUrlData,
+        { long: shortOriginal, short: result.short_link },
+      ]);
+
       setInputUrl("");
     } catch (error) {
       console.error(error);
@@ -51,12 +55,11 @@ const ShortForm = () => {
   };
 
   const removeFromStorage = (index: number) => {
-    const shortenedUrlsCopy = [...shortenedUrls];
-    const longUrlsCopy = [...longUrls];
-    shortenedUrlsCopy.splice(index, 1);
-    longUrlsCopy.splice(index, 1);
-    setShortenedUrls(shortenedUrlsCopy);
-    setlongUrls(longUrlsCopy);
+    setUrlData((prevUrlData) => {
+      const updatedUrlData = [...prevUrlData];
+      updatedUrlData.splice(index, 1);
+      return updatedUrlData;
+    });
   };
 
   return (
@@ -77,19 +80,17 @@ const ShortForm = () => {
           Shorten It!
         </button>
       </form>
-      {shortenedUrls.length > 0 && (
+      {urlData.length > 0 && (
         <div>
           <ul className="url-list" data-testid="url-list">
-            {shortenedUrls.map((url, index) => (
+            {urlData.map(({ long, short }, index) => (
               <li key={index} className="url-list--item">
-                <span className="url-list--item--original">
-                  {longUrls[index]}
-                </span>
+                <span className="url-list--item--original">{long}</span>
                 <hr />
-                <span className="url-list--item--shortened">{url}</span>
+                <span className="url-list--item--shortened">{short}</span>
                 <button
                   className="copy-button"
-                  onClick={() => copyToClipboard(url, index)}
+                  onClick={() => copyToClipboard(short, index)}
                 >
                   {copiedIndex === index ? "Copied!" : "Copy"}
                 </button>
