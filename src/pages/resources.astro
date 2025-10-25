@@ -1,0 +1,440 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Nav } from "../components/nav/Nav";
+import { Footer } from "../components/footer/Footer";
+---
+
+<Layout title="Resources - Shortly">
+  <div class="nav-wrapper">
+    <Nav client:load />
+  </div>
+  <main class="resources-page">
+    <section class="hero-section">
+      <h1>Resources & Learning</h1>
+      <p class="hero-description">
+        Everything you need to master link shortening and digital marketing
+      </p>
+    </section>
+
+    <section class="resources-grid">
+      <div class="resource-category">
+        <h2>Getting Started</h2>
+        <div class="resource-cards">
+          <div class="resource-card">
+            <div class="resource-icon">📘</div>
+            <h3>Quick Start Guide</h3>
+            <p>
+              Learn how to create your first shortened link in under 5 minutes. Perfect
+              for beginners.
+            </p>
+            <a href="#" class="resource-link">Read Guide →</a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">🎥</div>
+            <h3>Video Tutorials</h3>
+            <p>
+              Watch step-by-step video guides covering all aspects of Shortly's features.
+            </p>
+            <a href="#" class="resource-link">Watch Videos →</a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">💡</div>
+            <h3>Best Practices</h3>
+            <p>
+              Discover proven strategies for maximizing engagement with your shortened
+              links.
+            </p>
+            <a href="#" class="resource-link">Learn More →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-category">
+        <h2>Documentation</h2>
+        <div class="resource-cards">
+          <div class="resource-card">
+            <div class="resource-icon">📖</div>
+            <h3>API Documentation</h3>
+            <p>
+              Complete API reference for integrating Shortly into your applications and
+              workflows.
+            </p>
+            <a href="#" class="resource-link">View Docs →</a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">🔧</div>
+            <h3>Integration Guides</h3>
+            <p>
+              Step-by-step guides for integrating Shortly with popular platforms and
+              tools.
+            </p>
+            <a href="#" class="resource-link">Explore Integrations →</a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">🔐</div>
+            <h3>Security & Privacy</h3>
+            <p>
+              Learn about our security measures and how we protect your data and links.
+            </p>
+            <a href="#" class="resource-link">Read More →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="resource-category">
+        <h2>Blog & Insights</h2>
+        <div class="blog-posts">
+          <article class="blog-card">
+            <div class="blog-meta">
+              <span class="category">Marketing</span>
+              <span class="date">March 15, 2024</span>
+            </div>
+            <h3>10 Ways to Boost Click-Through Rates</h3>
+            <p>
+              Discover proven strategies to increase engagement and drive more traffic with
+              your shortened links.
+            </p>
+            <a href="#" class="blog-link">Read Article →</a>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-meta">
+              <span class="category">Analytics</span>
+              <span class="date">March 10, 2024</span>
+            </div>
+            <h3>Understanding Link Analytics</h3>
+            <p>
+              A comprehensive guide to interpreting your link data and making data-driven
+              decisions.
+            </p>
+            <a href="#" class="blog-link">Read Article →</a>
+          </article>
+
+          <article class="blog-card">
+            <div class="blog-meta">
+              <span class="category">Tips & Tricks</span>
+              <span class="date">March 5, 2024</span>
+            </div>
+            <h3>Custom Branded Links: A Complete Guide</h3>
+            <p>
+              Learn how to create memorable, branded short links that boost trust and
+              recognition.
+            </p>
+            <a href="#" class="blog-link">Read Article →</a>
+          </article>
+        </div>
+      </div>
+
+      <div class="resource-category">
+        <h2>Support & Community</h2>
+        <div class="resource-cards">
+          <div class="resource-card">
+            <div class="resource-icon">❓</div>
+            <h3>Help Center</h3>
+            <p>
+              Browse our knowledge base for answers to common questions and troubleshooting
+              tips.
+            </p>
+            <a href="#" class="resource-link">Visit Help Center →</a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">👥</div>
+            <h3>Community Forum</h3>
+            <p>
+              Connect with other Shortly users, share tips, and get help from the
+              community.
+            </p>
+            <a href="#" class="resource-link">Join Forum →</a>
+          </div>
+
+          <div class="resource-card">
+            <div class="resource-icon">✉️</div>
+            <h3>Contact Support</h3>
+            <p>
+              Need personalized help? Our support team is ready to assist you with any
+              questions.
+            </p>
+            <a href="#" class="resource-link">Get Support →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="newsletter-section">
+      <div class="newsletter-content">
+        <h2>Stay Updated</h2>
+        <p>Subscribe to our newsletter for tips, updates, and exclusive content</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .nav-wrapper {
+    background: white;
+  }
+
+  .resources-page {
+    min-height: 100vh;
+    background: #f8f9fa;
+  }
+
+  .hero-section {
+    text-align: center;
+    padding: 8rem 2rem 6rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .hero-section h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--Very-Dark-Blue);
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-description {
+    font-size: 1.8rem;
+    color: var(--Grayish-Violet);
+    max-width: 60rem;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .resources-grid {
+    max-width: 120rem;
+    margin: 0 auto;
+    padding: 6rem 2rem;
+  }
+
+  .resource-category {
+    margin-bottom: 8rem;
+  }
+
+  .resource-category h2 {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: var(--Very-Dark-Blue);
+    margin-bottom: 3rem;
+  }
+
+  .resource-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(32rem, 1fr));
+    gap: 3rem;
+  }
+
+  .resource-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .resource-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .resource-icon {
+    font-size: 4rem;
+    margin-bottom: 2rem;
+  }
+
+  .resource-card h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--Very-Dark-Blue);
+    margin-bottom: 1.5rem;
+  }
+
+  .resource-card p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: var(--Grayish-Violet);
+    margin-bottom: 2rem;
+  }
+
+  .resource-link {
+    display: inline-block;
+    color: var(--Cyan);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .resource-link:hover {
+    color: hsl(180, 74%, 77%);
+  }
+
+  .blog-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(35rem, 1fr));
+    gap: 3rem;
+  }
+
+  .blog-card {
+    background: white;
+    padding: 3rem;
+    border-radius: 1.2rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  .blog-meta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .category {
+    background: var(--Cyan);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 2rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+  }
+
+  .date {
+    color: var(--Grayish-Violet);
+    font-size: 1.4rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .blog-card h3 {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--Very-Dark-Blue);
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
+  }
+
+  .blog-card p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: var(--Grayish-Violet);
+    margin-bottom: 2rem;
+  }
+
+  .blog-link {
+    display: inline-block;
+    color: var(--Cyan);
+    font-size: 1.6rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .blog-link:hover {
+    color: hsl(180, 74%, 77%);
+  }
+
+  .newsletter-section {
+    background: var(--Dark-Violet);
+    background-image: url(/images/bg-boost-desktop.svg);
+    background-size: cover;
+    background-position: center;
+    padding: 8rem 2rem;
+  }
+
+  .newsletter-content {
+    max-width: 60rem;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .newsletter-content h2 {
+    font-size: 3.6rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 1.5rem;
+  }
+
+  .newsletter-content p {
+    font-size: 1.8rem;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 3rem;
+  }
+
+  .newsletter-form {
+    display: flex;
+    gap: 1.5rem;
+    max-width: 50rem;
+    margin: 0 auto;
+  }
+
+  .newsletter-form input {
+    flex: 1;
+    padding: 1.4rem 2rem;
+    border: none;
+    border-radius: 3rem;
+    font-size: 1.6rem;
+    outline: none;
+  }
+
+  .newsletter-form button {
+    padding: 1.4rem 3rem;
+    background: var(--Cyan);
+    color: white;
+    border: none;
+    border-radius: 3rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+
+  .newsletter-form button:hover {
+    background: hsl(180, 74%, 77%);
+  }
+
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 3rem;
+    }
+
+    .hero-description {
+      font-size: 1.6rem;
+    }
+
+    .resource-category h2 {
+      font-size: 2.6rem;
+    }
+
+    .resource-cards,
+    .blog-posts {
+      grid-template-columns: 1fr;
+    }
+
+    .newsletter-content h2 {
+      font-size: 2.8rem;
+    }
+
+    .newsletter-form {
+      flex-direction: column;
+    }
+
+    .newsletter-form button {
+      width: 100%;
+    }
+  }
+</style>

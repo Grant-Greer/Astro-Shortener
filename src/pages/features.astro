@@ -1,0 +1,228 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Nav } from "../components/nav/Nav";
+import { Footer } from "../components/footer/Footer";
+---
+
+<Layout title="Features - Shortly">
+  <div class="nav-wrapper">
+    <Nav client:load />
+  </div>
+  <main class="features-page">
+    <section class="hero-section">
+      <h1>Powerful Features</h1>
+      <p class="hero-description">
+        Everything you need to build, manage, and track your shortened links
+      </p>
+    </section>
+
+    <section class="features-grid">
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="/images/icon-brand-recognition.svg" alt="Brand Recognition" />
+        </div>
+        <h2>Brand Recognition</h2>
+        <p>
+          Boost your brand recognition with each click. Generic links don't mean a thing.
+          Branded links help instil confidence in your content.
+        </p>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="/images/icon-detailed-records.svg" alt="Detailed Records" />
+        </div>
+        <h2>Detailed Records</h2>
+        <p>
+          Gain insights into who is clicking your links. Knowing when and where people
+          engage with your content helps inform better decisions.
+        </p>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="/images/icon-fully-customizable.svg" alt="Fully Customizable" />
+        </div>
+        <h2>Fully Customizable</h2>
+        <p>
+          Improve brand awareness and content discoverability through customizable links,
+          supercharging audience engagement.
+        </p>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="/images/icon-brand-recognition.svg" alt="Link Management" />
+        </div>
+        <h2>Link Management</h2>
+        <p>
+          Organize and manage all your links in one place. Edit, delete, or update your
+          shortened URLs anytime.
+        </p>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="/images/icon-detailed-records.svg" alt="Analytics Dashboard" />
+        </div>
+        <h2>Analytics Dashboard</h2>
+        <p>
+          Track your link performance with comprehensive analytics. See clicks, geographic
+          data, and referral sources.
+        </p>
+      </div>
+
+      <div class="feature-item">
+        <div class="feature-icon">
+          <img src="/images/icon-fully-customizable.svg" alt="API Access" />
+        </div>
+        <h2>API Access</h2>
+        <p>
+          Integrate Shortly into your workflow with our powerful API. Automate link
+          creation and management.
+        </p>
+      </div>
+    </section>
+
+    <section class="cta-section">
+      <h2>Ready to get started?</h2>
+      <a href="/" class="cta-button">Try Shortly Now</a>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .nav-wrapper {
+    background: white;
+  }
+
+  .features-page {
+    min-height: 100vh;
+  }
+
+  .hero-section {
+    text-align: center;
+    padding: 8rem 2rem 6rem;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  }
+
+  .hero-section h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    color: var(--Very-Dark-Blue);
+    margin-bottom: 2rem;
+    letter-spacing: -1px;
+  }
+
+  .hero-description {
+    font-size: 1.8rem;
+    color: var(--Grayish-Violet);
+    max-width: 60rem;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+    gap: 4rem;
+    max-width: 120rem;
+    margin: 8rem auto;
+    padding: 0 2rem;
+  }
+
+  .feature-item {
+    background: white;
+    padding: 4rem 3rem;
+    border-radius: 0.8rem;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .feature-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+  }
+
+  .feature-icon {
+    width: 8rem;
+    height: 8rem;
+    background: var(--Dark-Violet);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  .feature-icon img {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  .feature-item h2 {
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: var(--Very-Dark-Blue);
+    margin-bottom: 1.5rem;
+  }
+
+  .feature-item p {
+    font-size: 1.6rem;
+    line-height: 1.8;
+    color: var(--Grayish-Violet);
+  }
+
+  .cta-section {
+    text-align: center;
+    padding: 8rem 2rem;
+    background: var(--Dark-Violet);
+    background-image: url(/images/bg-boost-desktop.svg);
+    background-size: cover;
+    background-position: center;
+  }
+
+  .cta-section h2 {
+    font-size: 3.6rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 3rem;
+  }
+
+  .cta-button {
+    display: inline-block;
+    padding: 1.4rem 4rem;
+    background: var(--Cyan);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border-radius: 3rem;
+    text-decoration: none;
+    transition: background 0.3s ease;
+  }
+
+  .cta-button:hover {
+    background: hsl(180, 74%, 77%);
+  }
+
+  @media (max-width: 768px) {
+    .hero-section h1 {
+      font-size: 3rem;
+    }
+
+    .hero-description {
+      font-size: 1.6rem;
+    }
+
+    .features-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      margin: 6rem auto;
+    }
+
+    .cta-section h2 {
+      font-size: 2.8rem;
+    }
+  }
+</style>

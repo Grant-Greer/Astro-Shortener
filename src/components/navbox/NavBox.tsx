@@ -6,13 +6,13 @@ export const NavBox = () => {
     <div className="navbox-container">
       <ul>
         <li>
-          <a href="#">Features</a>
+          <a href="/features">Features</a>
         </li>
         <li>
-          <a href="#">Pricing</a>
+          <a href="/pricing">Pricing</a>
         </li>
         <li>
-          <a href="#">Resources</a>
+          <a href="/resources">Resources</a>
         </li>
       </ul>
 

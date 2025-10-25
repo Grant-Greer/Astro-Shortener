@@ -15,19 +15,21 @@ export const Nav = () => {
     <>
       <div id="nav-container">
         <nav>
-          <img src="/images/logo.svg" alt="Shortly Logo" />
+          <a href="/">
+            <img src="/images/logo.svg" alt="Shortly Logo" />
+          </a>
 
           <HamburgerIcon onClick={handleHamburgerClick} />
 
           <ul>
             <li>
-              <a href="#">Features</a>
+              <a href="/features">Features</a>
             </li>
             <li>
-              <a href="#">Pricing</a>
+              <a href="/pricing">Pricing</a>
             </li>
             <li>
-              <a href="#">Resources</a>
+              <a href="/resources">Resources</a>
             </li>
           </ul>
           <div className="nav-right--desktop">
